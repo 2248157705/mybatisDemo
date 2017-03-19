@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--namespace 命名空间，作用是对 sql 语句进行管理-->
+<mapper namespace="mynamespace">
+
+    <insert id="add1">
+        insert into students(id,name,sal) values(1,'哈哈',7000)
+    </insert>
+
+    <!--
+        insert：执行插入数据
+        id：标示映射文件的 sql
+        #{param}：表示占位符（param和传入的参数名相同）
+        parameterType：表示输入的参数类型
+        returnType：sql 语句执行后返回的数据类型
+    -->
+    <insert id="add2" parameterType="_1fastDemo.entity.Student">
+        insert into students(id,name,sal) values(#{id},#{name},#{sal})
+    </insert>
+
+</mapper>

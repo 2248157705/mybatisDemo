@@ -1,7 +1,7 @@
-package fastDemo.dao;
+package _1fastDemo.dao;
 
-import fastDemo.entity.Student;
-import fastDemo.util.MyBatisUtil;
+import _1fastDemo.entity.Student;
+import _1fastDemo.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
 /**
@@ -24,6 +24,7 @@ public class StudentDao {
         }
         MyBatisUtil.closeSqlSession();
     }
+
     /**
      * 增加学生（有参）
      */
@@ -42,7 +43,7 @@ public class StudentDao {
     }
     public static void main(String[] args) throws Exception{
         StudentDao dao = new StudentDao();
-        dao.add1();
-        dao.add2(new Student(2,"呵呵",8000D));
+//        dao.add1();
+        dao.add2(new Student(3,"呵呵",8000D));
     }
 }

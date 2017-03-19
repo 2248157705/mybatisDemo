@@ -1,4 +1,4 @@
-package fastDemo.entity;
+package _1fastDemo.entity;
 
 /**
  * Created by acey on 17-3-5.

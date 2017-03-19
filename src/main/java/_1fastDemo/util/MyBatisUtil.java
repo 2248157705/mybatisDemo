@@ -1,4 +1,4 @@
-package fastDemo.util;
+package _1fastDemo.util;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
