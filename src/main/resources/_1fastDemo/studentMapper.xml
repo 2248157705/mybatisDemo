@@ -18,7 +18,24 @@
         returnType：sql 语句执行后返回的数据类型
     -->
     <insert id="add2" parameterType="_1fastDemo.entity.Student">
-        insert into students(id,name,sal) values(#{id},#{name},#{sal})
+    <!--
+        自增主键 主键返回
+        selelctkey:将插入的主键返回到 student 对象中
+        SELECT LAST_INSERT_ID():得到刚才插入记录的主键值(只适合自增主键)
+        keyProperty:将查询到的主键值填充到哪个属性中去
+        order:执行顺序(after)在执行插入语句(insert)后执行
+        resultType:返回类型
+    -->
+        <selectKey keyProperty="id" order="AFTER" resultType="int">
+            SELECT LAST_INSERT_ID();
+        </selectKey>
+    <!--
+        非自增主键,主键返回(UUID)
+        <selectKey keyProperty="id" order="BEFORE" resultType="string">
+            SELECT UUID();
+        </selectKey>
+     -->
+        insert into students(name,sal) values(#{name},#{sal})
     </insert>
 
 </mapper>

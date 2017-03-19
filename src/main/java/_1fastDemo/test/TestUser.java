@@ -51,6 +51,7 @@ public class TestUser {
     @Test
     public void test1() {
         SqlSession sqlSession = null;
+        Student stu = new Student();
         try {
             //得到配置文件流
             InputStream inputStream = Resources.getResourceAsStream("mybatis.xml");
@@ -59,8 +60,11 @@ public class TestUser {
             //从工厂中获取 sqlSession
             sqlSession = sqlSessionFactory.openSession();
 
+
+            stu.setName("哈哈");
+            stu.setSal(7000.0);
             //插入数据
-            sqlSession.insert("mynamespace.add2",new Student(2,"哈哈",7000.0));
+            sqlSession.insert("mynamespace.add2",stu);
 
         } catch (Exception e) {
             //回滚
@@ -71,6 +75,7 @@ public class TestUser {
             sqlSession.commit();
             //关闭
             sqlSession.close();
+            System.out.println(stu.getId());
         }
     }
 }
