@@ -8,7 +8,6 @@
     <insert id="insertStu" parameterType="_2mapperProxy.Student">
         insert into students(name,sal) values(#{name},#{sal})
     </insert>
-
     <update id="updateStu" parameterType="_2mapperProxy.Student">
         UPDATE students SET name = #{name} and sal=#{sal] WHERE id=#{id}
     </update>

@@ -3,6 +3,20 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+    <typeAliases>
+        <!--
+            对单个别名定义
+            type：类型的路径
+            alias：别名名称
+        -->
+        <typeAlias type="_2mapperProxy.Student" alias="student"/>
+        <!--
+            批量别名定义
+            mybatis 会自动扫描指定包下的 po 类，自定义别名，别名为类名（首字母大/小写）
+        -->
+        <!--<package name="_2mapperProxy"/>-->
+    </typeAliases>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -17,5 +31,7 @@
     <mappers>
         <mapper resource="_1fastDemo/studentMapper.xml"/>
         <mapper resource="_2mapperProxy/studentMapper.xml"/>
+        <mapper resource="_3resultMap/studentMapper.xml"/>
+
     </mappers>
 </configuration>

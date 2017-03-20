@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="_3resultMap.StudentMapper">
+
+    <!--对查询的结果进行映射-->
+    <resultMap id="studentResultMap" type="_3resultMap.Student">
+        <id column="id_" property="id"/>
+        <result column="name_" property="name"/>
+        <result column="sal_" property="sal"/>
+    </resultMap>
+
+    <select id="findById" resultMap="studentResultMap" parameterType="Integer">
+        SELECT id id_ ,name name_,sal sal_ from students WHERE id=#{id}
+    </select>
+
+
+</mapper>
