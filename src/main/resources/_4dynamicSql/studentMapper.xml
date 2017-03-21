@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="_4dynamicSql.StudentMapper">
+    <!--
+        定义 sql 片段
+        id:sql片段唯一标示符
+    -->
+    <sql id="query_student_where" >
+        <if test="studentCustom!=null">
+            <if test=" studentCustom.name != null and studentCustom.name != ''">
+                and name = #{studentCustom.name}
+            </if>
+            <if test="studentCustom.sal != null and studentCustom.sal != ''">
+                AND sal = #{studentCustom.sal}
+            </if>
+        </if>
+    </sql>
+
+    <select id="findStudents" resultType="_4dynamicSql.Student" parameterType="_4dynamicSql.StudentVo">
+        SELECT id,name,sal FROM students
+
+        <!--
+                使用where可以自动省掉sql中的第一个and
+        -->
+        <!--<where>-->
+            <!--<if test="studentCustom!=null">-->
+                <!--<if test=" studentCustom.name != null and studentCustom.name != ''">-->
+                    <!--and name = #{studentCustom.name}-->
+                <!--</if>-->
+                <!--<if test="studentCustom.sal != null and studentCustom.sal != ''">-->
+                    <!--AND sal = #{studentCustom.sal}-->
+                <!--</if>-->
+            <!--</if>-->
+        <!--</where>-->
+
+        <!--<where>-->
+            <!--<include refid="query_student_where"/>-->
+        <!--</where>-->
+
+        <!--
+            使用 foreach 遍历传入data
+            collection:指定输入对象中集合属性
+            item:每次遍历的项
+            open:开始遍历时拼接的串
+            close:结束时遍历拼接的串
+            separator:遍历的两个对象之间的串
+        -->
+        <foreach collection="data" item="item" open=" AND (" close=")" separator="OR">
+            id=#{item}
+        </foreach>
+    </select>
+
+</mapper>

@@ -32,6 +32,7 @@
         <mapper resource="_1fastDemo/studentMapper.xml"/>
         <mapper resource="_2mapperProxy/studentMapper.xml"/>
         <mapper resource="_3resultMap/studentMapper.xml"/>
+        <mapper resource="_4dynamicSql/studentMapper.xml"/>
 
     </mappers>
 </configuration>
