@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="_6oneToOneMapperReturnMap.mapper.OrderMapper">
+
+    <!--
+       订单关联用户的 resultMap
+       将查询结果封装到 Order 中
+    -->
+    <resultMap id="orderReturnMap" type="_6oneToOneMapperReturnMap.po.Order">
+        <!--
+            配置映射订单的信息
+            id：订单信息中的唯一标识，如果有多个字段组成这个唯一标识，那么需要配置多个id
+            column：订单的标识（表中的字段名）
+            property：订单的标识，即表字段对应实体类中的属性
+        -->
+        <id column="id" property="id"/>
+        <result column="number" property="number"/>
+        <result property="userId" column="user_id"/>
+        <!--
+            配置订单关联用户的信息
+            association：需要关联对象的实体类
+            property：所关联对象对应的属性
+        -->
+        <association property="user" javaType="_6oneToOneMapperReturnMap.po.User">
+            <!--
+                id：关联查询用户的唯一标识
+            -->
+            <id property="userId" column="id"/>
+            <result column="name" property="name"/>
+        </association>
+    </resultMap>
+    
+  <select id="findOrdersUser" resultMap="orderReturnMap" >
+      SELECT t_order.id,t_order.number,t_user.name from t_order,t_user WHERE t_user.id = t_order.user_id
+  </select>
+
+</mapper>
