@@ -3,6 +3,13 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+    <settings>
+        <!--
+            延迟加载设置
+        -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
     <typeAliases>
         <!--
             对单个别名定义
@@ -16,7 +23,6 @@
         -->
         <!--<package name="_2mapperProxy"/>-->
     </typeAliases>
-
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -37,5 +43,6 @@
         <mapper resource="_6oneToOneMapperReturnMap/OrderMapper.xml"/>
         <mapper resource="_7oneToManyMapper/OrderMapper.xml"/>
         <mapper resource="_8manyToManyMapper/OrderMapper.xml"/>
+        <mapper resource="_9lazyLoading/OrderMapper.xml"/>
     </mappers>
 </configuration>

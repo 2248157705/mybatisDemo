@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="_9lazyLoading.mapper.OrderMapper">
+
+    <resultMap id="orders" type="_9lazyLoading.po.Order">
+        <id column="id" property="id"/>
+        <result column="number" property="number"/>
+        <!--
+            select：指定延迟加载的statement的id
+            column：关联的列
+        -->
+        <association property="user" javaType="_9lazyLoading.po.User"
+                     select="findUserById" column="user_id"/>
+    </resultMap>
+
+  <select id="findOrders" resultMap="orders" >
+    select * from t_order;
+  </select>
+    <select id="findUserById" parameterType="int" resultType="_9lazyLoading.po.User">
+        SELECT * FROM t_user WHERE id = #{id}
+    </select>
+</mapper>
