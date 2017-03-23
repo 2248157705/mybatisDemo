@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="_7oneToManyMapper.mapper.OrderMapper">
+
+    <resultMap id="orderReturnMap" type="_7oneToManyMapper.po.Order">
+        <id column="id" property="id"/>
+        <result column="number" property="number"/>
+        <result property="userId" column="user_id"/>
+        <association property="user" javaType="_7oneToManyMapper.po.User">
+            <id property="id" column="user_id"/>
+            <result column="name" property="name"/>
+        </association>
+    </resultMap>
+
+    <!--
+        extends：使用继承可以省去配置订单和用户的映射
+    -->
+    <resultMap id="orderDetail" type="_7oneToManyMapper.po.Order" extends="orderReturnMap">
+        <!--
+            collection：一对多映射标签
+            property：将多条记录映射到那个属性中去
+            ofType：指定映射到list集合中的pojo对象类型
+        -->
+        <collection property="products" ofType="_7oneToManyMapper.po.Product">
+            <id column="product_id" property="id"/>
+            <result column="product_name" property="productName"/>
+            <result column="id" property="orderId"/>
+        </collection>
+    </resultMap>
+    <!--
+        内连接查询
+    -->
+  <select id="findOrdersUser" resultMap="orderDetail" >
+
+      SELECT t_order.number,
+        t_order.id,
+        t_order.user_id,
+        t_user.name,
+        t_product.price,
+        t_product.id product_id,
+        t_product.product_name
+
+      FROM t_order,t_user,t_product WHERE t_order.user_id =t_user.id AND t_product.order_id = t_order.id;
+  </select>
+
+</mapper>

@@ -35,5 +35,6 @@
         <mapper resource="_4dynamicSql/studentMapper.xml"/>
         <mapper resource="_5oneToOneMapperReturnType/OrderCustomMapper.xml"/>
         <mapper resource="_6oneToOneMapperReturnMap/OrderMapper.xml"/>
+        <mapper resource="_7oneToManyMapper/OrderMapper.xml"/>
     </mappers>
 </configuration>
