@@ -33,6 +33,16 @@ public class Order {
         this.number = number;
     }
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                ", userId=" + userId +
+                ", user=" + user +
+                '}';
+    }
+
     public Integer getUserId() {
         return userId;
     }

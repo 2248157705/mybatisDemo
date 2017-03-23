@@ -1,8 +1,7 @@
 package _6oneToOneMapperReturnMap;
 
-import _5oneToOneMapperReturnType.mapper.OrderCustomMapper;
-import _5oneToOneMapperReturnType.po.OrderCustom;
 import _6oneToOneMapperReturnMap.mapper.OrderMapper;
+import _6oneToOneMapperReturnMap.po.Order;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,7 +11,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
 /**
  * Created by acey on 17-3-19.
@@ -31,8 +29,8 @@ public class TestStudent {
     public void testFindOrdersUser() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         OrderMapper mapper = sqlSession.getMapper(OrderMapper.class);
-        List<OrderCustom> ordersUser = mapper.findOrdersUser();
-        System.out.println(ordersUser.size());
+        Order ordersUser = mapper.findOrdersUser();
+        System.out.println(ordersUser);
     }
 
 }
