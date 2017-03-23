@@ -36,5 +36,6 @@
         <mapper resource="_5oneToOneMapperReturnType/OrderCustomMapper.xml"/>
         <mapper resource="_6oneToOneMapperReturnMap/OrderMapper.xml"/>
         <mapper resource="_7oneToManyMapper/OrderMapper.xml"/>
+        <mapper resource="_8manyToManyMapper/OrderMapper.xml"/>
     </mappers>
 </configuration>

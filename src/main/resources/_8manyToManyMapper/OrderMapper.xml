@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="_8manyToManyMapper.mapper.OrderMapper">
+
+    <resultMap id="userDetail" type="_8manyToManyMapper.po.User">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+
+        <collection property="orders" ofType="_8manyToManyMapper.po.Order">
+            <id column="order_id" property="id"/>
+            <result column="number" property="number"/>
+            <collection property="products" ofType="_8manyToManyMapper.po.Product">
+                <id column="product_id" property="id"/>
+                <result column="product_name" property="productName"/>
+                <result column="price" property="price"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+  <select id="findOrdersUser" resultMap="userDetail" >
+
+      SELECT
+        t_user.id,
+        t_user.name,
+        t_order.number,
+        t_order.id order_id,
+        t_product.price,
+        t_product.id product_id,
+        t_product.product_name
+
+      FROM t_order,t_user,t_product WHERE
+      t_order.user_id =t_user.id AND t_product.order_id = t_order.id;
+  </select>
+
+</mapper>
