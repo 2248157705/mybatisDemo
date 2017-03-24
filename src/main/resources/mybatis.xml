@@ -44,5 +44,6 @@
         <mapper resource="_7oneToManyMapper/OrderMapper.xml"/>
         <mapper resource="_8manyToManyMapper/OrderMapper.xml"/>
         <mapper resource="_9lazyLoading/OrderMapper.xml"/>
+        <mapper resource="_10encache/UserMapper.xml"/>
     </mappers>
 </configuration>

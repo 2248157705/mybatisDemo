@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="_10encache.mapper.UserMapper">
+    <!--
+        开启本mapper中的namespace下的二级缓存
+        type：指定cache接口的实现类的类型，mybatis默认是PerpetualCache
+    -->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+    <select id="findUserById" parameterType="int" resultType="_10encache.po.User">
+        SELECT * FROM t_user WHERE id = #{id}
+    </select>
+</mapper>

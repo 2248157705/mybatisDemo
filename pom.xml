@@ -44,6 +44,18 @@
             <artifactId>junit</artifactId>
             <version>RELEASE</version>
         </dependency>
+
+        <!--缓存整合-->
+        <dependency>
+            <groupId>org.ehcache.modules</groupId>
+            <artifactId>ehcache-core</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.caches</groupId>
+            <artifactId>mybatis-ehcache</artifactId>
+            <version>1.1.0</version>
+        </dependency>
     </dependencies>
 
 </project>
